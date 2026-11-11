@@ -24,4 +24,17 @@ public class VesselUtil {
     public void addVesselPerformance(Vessel vessel) {
         this.vesselList.add(vessel);
     }
+
+    public Vessel getVesselById(String vesselId) {
+        if (vesselId == null || this.vesselList == null) {
+            return null;
+        }
+        for (int idx = 0; idx < this.vesselList.size(); idx++) {
+            Vessel current = this.vesselList.get(idx);
+            if (current != null && vesselId.equals(current.getVesselId())) {
+                return current;
+            }
+        }
+        return null;
+    }
 }
