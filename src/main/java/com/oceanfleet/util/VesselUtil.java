@@ -13,12 +13,14 @@ public class VesselUtil {
         this.vesselList = new ArrayList<>();
     }
 
+    // Encapsulation: Return defensive copy to safeguard internal state
     public List<Vessel> getVesselList() {
-        return this.vesselList;
+        return new ArrayList<>(this.vesselList);
     }
 
+    // Encapsulation: Store defensive copy of incoming collection
     public void setVesselList(List<Vessel> vesselList) {
-        this.vesselList = vesselList;
+        this.vesselList = (vesselList != null) ? new ArrayList<>(vesselList) : new ArrayList<>();
     }
 
     public void addVesselPerformance(Vessel vessel) {
