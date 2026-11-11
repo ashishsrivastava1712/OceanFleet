@@ -37,4 +37,28 @@ public class VesselUtil {
         }
         return null;
     }
+
+    public List<Vessel> getHighPerformanceVessels() {
+        List<Vessel> topPerformers = new ArrayList<>();
+        if (this.vesselList == null || this.vesselList.isEmpty()) {
+            return topPerformers;
+        }
+
+        double peakSpeed = this.vesselList.get(0).getAverageSpeed();
+        for (int i = 1; i < this.vesselList.size(); i++) {
+            double currentSpeed = this.vesselList.get(i).getAverageSpeed();
+            if (currentSpeed > peakSpeed) {
+                peakSpeed = currentSpeed;
+            }
+        }
+
+        for (int i = 0; i < this.vesselList.size(); i++) {
+            Vessel v = this.vesselList.get(i);
+            if (Double.compare(v.getAverageSpeed(), peakSpeed) == 0) {
+                topPerformers.add(v);
+            }
+        }
+
+        return topPerformers;
+    }
 }
